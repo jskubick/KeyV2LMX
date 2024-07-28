@@ -158,17 +158,15 @@ module flat_support() {
   children();
 }
 
-module legend(text, position=[0,0], size=undef, font=undef) {
+module legend(text, position=[0,0], size=undef) {
     font_size = size == undef ? $font_size : size;
-    font_face = font == undef ? $font : font;
-    $legends = [for(L=[$legends, [[text, position, font_size, font_face]]], a=L) a];
+    $legends = [for(L=[$legends, [[text, position, font_size]]], a=L) a];
     children();
 }
 
-module front_legend(text, position=[0,0], size=undef, font=undef) {
+module front_legend(text, position=[0,0], size=undef) {
     font_size = size == undef ? $font_size : size;
-    font_face = font == undef ? $font : font;
-    $front_legends = [for(L=[$front_legends, [[text, position, font_size, font_face]]], a=L) a];
+    $front_legends = [for(L=[$front_legends, [[text, position, font_size]]], a=L) a];
     children();
 }
 
@@ -208,7 +206,7 @@ module sideways() {
  * then we extend the line created by the slope of the keytop to that line
  * the angle of the latter line off the ground is $top_tilt, and
  * you can create a right triangle with the adjacent edge being $bottom_key_height/2
- * raised up $total_depth. this gets you x, the component of the extended
+ * raised up $total_depth. this gets you x, the component of the extended 
  * keytop slope line, and y, a component of the first perpendicular line.
  * by a very similar triangle you get r and s, where x is the hypotenuse of that
  * right triangle and the right angle is again against the first perpendicular line
@@ -231,7 +229,7 @@ module backside() {
   s = cos(-$top_tilt) * x;
 
   q = atan2(s, (y + b - r));
-
+  
   translate([0,0,cos(q) * total_key_height()/2])
     rotate([-90 - q, 0,0]) children();
 }
