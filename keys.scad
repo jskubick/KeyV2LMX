@@ -8,8 +8,20 @@
 include <./includes.scad>
 
 
+$stem_type = "rounded_cherry";
+$stem_inset = -1;
+$rounded_cherry_stem_d=5.65;
+//$inner_shape_type="dished";
+$stem_inner_slop = 0.01;
+$stem_slop = 0.1;
+$stabilizer_type = "cherry_stabilizer";
+$stem_support_type = "disabled";
+
+
 // example key
-dcs_row(5) legend("⇪", size=9) key();
+$key_length = 1.25;
+mt3_row(3) legend("rA5.65", size=2.3) key();
+//color("RosyBrown",0.5) cube(size=[5.6,5.6,0.9], center=true);
 
 // example row
 /* for (x = [0:1:4]) {
